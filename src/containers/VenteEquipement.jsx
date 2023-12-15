@@ -30,7 +30,7 @@ const VenteEquipement = () => {
       const fetchEquipements = async () => {
         try {
             const user = JSON.parse(localStorage.getItem('user'))
-            const response = await fetch('https://agriconnectapi.pythonanywhere.com/agriculture/equipements', {
+            const response = await fetch('https://agriconnectapi.pythonanywhere.com/agriculture/equipementsUser', {
                 method: 'GET', 
                 headers: {
                     'Authorization' : `Bearer ${user.token}`
