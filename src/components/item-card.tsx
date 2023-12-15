@@ -34,7 +34,7 @@ export default function ItemCard({ item, onClick }: ItemCardProps) {
           className="object-cover"
         /> */}
         <img
-          src={"http://localhost:8000"+item.image}
+          src={"https://agriconnectapi.pythonanywhere.com"+item.image}
           alt={'Alt ' + item.name}
           className="object-cover"
         />

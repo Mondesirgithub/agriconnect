@@ -30,7 +30,7 @@ const VenteEquipement = () => {
       const fetchEquipements = async () => {
         try {
             const user = JSON.parse(localStorage.getItem('user'))
-            const response = await fetch('http://localhost:8000/agriculture/equipements', {
+            const response = await fetch('https://agriconnectapi.pythonanywhere.com/agriculture/equipements', {
                 method: 'GET', 
                 headers: {
                     'Authorization' : `Bearer ${user.token}`
@@ -55,7 +55,7 @@ const VenteEquipement = () => {
 
           if (isChecked) {
             // Appeler l'API pour "Ne pas mettre en location"
-            const res = await fetch(`http://localhost:8000/agriculture/unsent_equipement/${equipementId}`, {
+            const res = await fetch(`https://agriconnectapi.pythonanywhere.com/agriculture/unsent_equipement/${equipementId}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ const VenteEquipement = () => {
       if (isChecked) {
         try {
             const user = JSON.parse(localStorage.getItem('user'))
-          const res = await fetch(`http://localhost:8000/agriculture/sent_equipement/${equipementId}`, {
+          const res = await fetch(`https://agriconnectapi.pythonanywhere.com/agriculture/sent_equipement/${equipementId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -140,7 +140,7 @@ const VenteEquipement = () => {
             <img
             width={100}
             height={100}
-            src={"http://localhost:8000"+equipement.image}
+            src={"https://agriconnectapi.pythonanywhere.com"+equipement.image}
             alt={'Alt ' + equipement.name}
             className="object-cover"
             />

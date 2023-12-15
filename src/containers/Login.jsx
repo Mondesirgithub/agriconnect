@@ -38,7 +38,7 @@ export default function Signing() {
         setLoading(true);
 
         try{
-            const res = await fetch('http://localhost:8000/comptes/users/login/', {
+            const res = await fetch('https://agriconnectapi.pythonanywhere.com/comptes/users/login/', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

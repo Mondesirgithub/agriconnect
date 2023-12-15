@@ -89,7 +89,7 @@ export default function ProductDetails() {
             /> */}
             <img
               className="object-cover"
-              src={"http://localhost:8000"+state.item.image}
+              src={"https://agriconnectapi.pythonanywhere.com"+state.item.image}
               alt={`${state.item.name}-img`}
               sizes="(max-width: 768px) 100vw"
             />

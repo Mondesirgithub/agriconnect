@@ -30,7 +30,7 @@ export default function Checkout() {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const { items, calculatePrice, calculatePrice1, clearCart, items1 } = useCart();
+  const { items, calculatePrice, calculatePrice1, clearCart, items1, clearCart1 } = useCart();
   const [user , setUser] = useState(null)
 
 
@@ -95,6 +95,7 @@ export default function Checkout() {
     form.append('address', address);
     form.append('phone_number', goodformattedValue);
     form.append('email', user && JSON.parse(user).username);
+    form.append('openLocation', state.openLocation);
     form.append(
       'bill_amount',
       state.openLocation ? calculatePrice1() : calculatePrice()
@@ -110,7 +111,11 @@ export default function Checkout() {
     const data = await res.json()
     if (res.status === 200) {
       setSuccess(true);
-      clearCart();
+      if(state.openLocation){
+        clearCart1()
+      }else{
+        clearCart();
+      }
     } else {
       setError(true);
     }
@@ -126,6 +131,7 @@ export default function Checkout() {
     });
   };
   if (success) {
+
     return <OrderSubmit />;
   }
 

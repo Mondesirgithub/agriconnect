@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { DrawerContext } from 'contexts/drawer/drawer.provider';
 import ArrowLeft from 'assets/icons/arrow-left';
 import SuccessIcon from 'assets/icons/success-tick';
@@ -13,6 +13,10 @@ export default function OrderSubmit() {
       },
     });
   };
+
+  setTimeout(() => {
+    window.location.href = "/"
+  }, 2000)
 
   return (
     <>
