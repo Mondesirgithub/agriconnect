@@ -1,6 +1,8 @@
+import config from '../../src/config'
+
 export async function getCategories() {
 
-  const categories = await fetch("https://agriconnectapi.pythonanywhere.com/agriculture/categories/", {
+  const categories = await fetch(`${config.apiUrl}/agriculture/categories/`, {
     method: "GET"
   }) 
 

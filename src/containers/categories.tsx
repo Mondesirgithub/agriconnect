@@ -1,7 +1,7 @@
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import CategoryCard from 'components/category-card';
-
+import config from '../config'
 import 'swiper/css/bundle';
 
 import {
@@ -56,7 +56,7 @@ const Categories = forwardRef(
             <SwiperSlide key={current.id}>
               <CategoryCard
                 id={current.id}
-                imageUrl={"https://agriconnectapi.pythonanywhere.com"+current.image}
+                imageUrl={config.apiUrl+current.image}
                 name={current.name}
               />
             </SwiperSlide>

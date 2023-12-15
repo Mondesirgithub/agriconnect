@@ -1,7 +1,7 @@
 import React, { useReducer, useContext, createContext } from 'react';
 import { reducer, cartItemsTotalPrice, cartItemsTotalPrice1 } from './cart.reducer';
 import { useStorage } from 'helpers/use-storage';
-
+import config from '../../config'
 const CartContext = createContext({} as any);
 
 const INITIAL_STATE = {
@@ -20,7 +20,7 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
   //   const fetchItems = async () => {
   //     try {
   //       // Fetch items from API for the first array
-  //       const response = await fetch('https://agriconnectapi.pythonanywhere.com/agriculture/articles/', {
+  //       const response = await fetch('${config.apiUrl}/agriculture/articles/', {
   //         method :'GET'
   //       });
   //       const data = await response.json();
@@ -33,7 +33,7 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
   //   const fetchItems1 = async () => {
   //     try {
   //       // Fetch items from API for the second array
-  //       const response = await fetch('https://agriconnectapi.pythonanywhere.com/agriculture/articles_location/', {
+  //       const response = await fetch('${config.apiUrl}/agriculture/articles_location/', {
   //         method: "GET"
   //       });
   //       const data = await response.json();
@@ -56,7 +56,7 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
         if(Number(item.rental_stock) >= Number(item.quantity ? item.quantity : quantity )+1){
           dispatch({ type: 'ADD_ITEM1', payload: { ...item, quantity } });
           const user = JSON.parse(localStorage.getItem('user'))
-          fetch(`https://agriconnectapi.pythonanywhere.com/agriculture/ajouter_au_panier_location/${item.id}`, {
+          fetch(`${config.apiUrl}/agriculture/ajouter_au_panier_location/${item.id}`, {
             method: 'POST',
             headers: {
               'Authorization': `Bearer ${user.token}`,
@@ -76,7 +76,7 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
         if(Number(item.stock) >= Number(item.quantity ? item.quantity : quantity )+1){
           dispatch({ type: 'ADD_ITEM', payload: { ...item, quantity } });
           const user = JSON.parse(localStorage.getItem('user'))
-          fetch(`https://agriconnectapi.pythonanywhere.com/agriculture/ajouter_au_panier/${item.id}`, {
+          fetch(`${config.apiUrl}/agriculture/ajouter_au_panier/${item.id}`, {
             method: 'POST',
             headers: {
               'Authorization': `Bearer ${user.token}`,
@@ -100,7 +100,7 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
     if(item.valide_location){
       dispatch({ type: 'REMOVE_ITEM1', payload: { ...item, quantity } });
       const user = JSON.parse(localStorage.getItem('user'))
-      fetch(`https://agriconnectapi.pythonanywhere.com/agriculture/supprimer_au_panier_location/${item.id}`, {
+      fetch(`${config.apiUrl}/agriculture/supprimer_au_panier_location/${item.id}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${user.token}`,
@@ -116,7 +116,7 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
     }else{
       dispatch({ type: 'REMOVE_ITEM', payload: { ...item, quantity } });
       const user = JSON.parse(localStorage.getItem('user'))
-      fetch(`https://agriconnectapi.pythonanywhere.com/agriculture/supprimer_au_panier/${item.id}`, {
+      fetch(`${config.apiUrl}/agriculture/supprimer_au_panier/${item.id}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${user.token}`,
@@ -137,7 +137,7 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
     if(item.valide_location){
       dispatch({ type: 'CLEAR_ITEM_FROM_CART1', payload: item });
       const user = JSON.parse(localStorage.getItem('user'))
-      fetch(`https://agriconnectapi.pythonanywhere.com/agriculture/retirer_produit_location/${item.id}`, {
+      fetch(`${config.apiUrl}/agriculture/retirer_produit_location/${item.id}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${user.token}`,
@@ -152,7 +152,7 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
     }else{
       dispatch({ type: 'CLEAR_ITEM_FROM_CART', payload: item });
       const user = JSON.parse(localStorage.getItem('user'))
-      fetch(`https://agriconnectapi.pythonanywhere.com/agriculture/retirer_produit/${item.id}`, {
+      fetch(`${config.apiUrl}/agriculture/retirer_produit/${item.id}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${user.token}`,

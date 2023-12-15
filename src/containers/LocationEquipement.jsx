@@ -6,7 +6,7 @@ import {
     InputBase,
     TextBoxEnable,
   } from 'components/utils/theme';
-
+import config from '../config'
 
 
 
@@ -98,7 +98,7 @@ const LocationEquipement = () => {
       if (isChecked) {
         try {
             const user = JSON.parse(localStorage.getItem('user'))
-          const res = await fetch(`https://agriconnectapi.pythonanywhere.com/agriculture/rent_equipement/${equipementId}`, {
+          const res = await fetch(`${config.apiUrl}/agriculture/rent_equipement/${equipementId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ const LocationEquipement = () => {
             <img
             width={100}
             height={100}
-            src={"https://agriconnectapi.pythonanywhere.com"+equipement.image}
+            src={config.apiUrl+equipement.image}
             alt={'Alt ' + equipement.name}
             className="object-cover"
             />

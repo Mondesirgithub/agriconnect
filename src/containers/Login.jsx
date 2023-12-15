@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Button from 'components/button';
 import { useRouter } from 'next/navigation'
 import 'react-toastify/dist/ReactToastify.css';
-
+import config from '../config'
 const initialState = {
     email: '',
     password: '',
@@ -38,7 +38,7 @@ export default function Signing() {
         setLoading(true);
 
         try{
-            const res = await fetch('https://agriconnectapi.pythonanywhere.com/comptes/users/login/', {
+            const res = await fetch(`${config.apiUrl}/comptes/users/login/`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

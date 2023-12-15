@@ -5,6 +5,7 @@ import {
   ItemCardContent,
   ItemCardPrice,
 } from './utils/theme';
+import config from '../config'
 
 interface ItemProps {
   image: string;
@@ -34,7 +35,7 @@ export default function ItemCard({ item, onClick }: ItemCardProps) {
           className="object-cover"
         /> */}
         <img
-          src={"https://agriconnectapi.pythonanywhere.com"+item.image}
+          src={config.apiUrl+item.image}
           alt={'Alt ' + item.name}
           className="object-cover"
         />

@@ -6,8 +6,7 @@ import {
     InputBase,
     TextBoxEnable,
   } from 'components/utils/theme';
-
-
+import config from '../config'
 
 
 const VenteEquipement = () => {
@@ -30,7 +29,7 @@ const VenteEquipement = () => {
       const fetchEquipements = async () => {
         try {
             const user = JSON.parse(localStorage.getItem('user'))
-            const response = await fetch('https://agriconnectapi.pythonanywhere.com/agriculture/equipementsUser', {
+            const response = await fetch(`${config.apiUrl}/agriculture/equipementsUser`, {
                 method: 'GET', 
                 headers: {
                     'Authorization' : `Bearer ${user.token}`
@@ -55,7 +54,7 @@ const VenteEquipement = () => {
 
           if (isChecked) {
             // Appeler l'API pour "Ne pas mettre en location"
-            const res = await fetch(`https://agriconnectapi.pythonanywhere.com/agriculture/unsent_equipement/${equipementId}`, {
+            const res = await fetch(`${config.apiUrl}/agriculture/unsent_equipement/${equipementId}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
@@ -95,7 +94,7 @@ const VenteEquipement = () => {
       if (isChecked) {
         try {
             const user = JSON.parse(localStorage.getItem('user'))
-          const res = await fetch(`https://agriconnectapi.pythonanywhere.com/agriculture/sent_equipement/${equipementId}`, {
+          const res = await fetch(`${config.apiUrl}/agriculture/sent_equipement/${equipementId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -140,7 +139,7 @@ const VenteEquipement = () => {
             <img
             width={100}
             height={100}
-            src={"https://agriconnectapi.pythonanywhere.com"+equipement.image}
+            src={config.apiUrl+equipement.image}
             alt={'Alt ' + equipement.name}
             className="object-cover"
             />

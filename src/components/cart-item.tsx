@@ -10,6 +10,7 @@ import {
   CartItemTotalWrapper,
   CartItemTotalPrice,
 } from './utils/theme';
+import config from '../config'
 
 type CartItemProps = {
   item: any;
@@ -23,7 +24,7 @@ const CartItem: React.FC<CartItemProps> = ({ item, location }) => {
     <div className={CartItemBase}>
       <div className={CartItemImage}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={"https://agriconnectapi.pythonanywhere.com"+item.image} alt={item.name} />
+        <img src={config.apiUrl+item.image} alt={item.name} />
       </div>
 
       <div className={CartItemContent}>

@@ -9,6 +9,7 @@ import Button from 'components/button';
 import { useCart } from 'contexts/cart/cart.provider';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng, Suggestion } from 'react-places-autocomplete';
 import OrderSubmit from './order-submit';
+import config from '../../../config'
 import {
   InputBase,
   TextBoxCommonBase,
@@ -100,7 +101,7 @@ export default function Checkout() {
       'bill_amount',
       state.openLocation ? calculatePrice1() : calculatePrice()
     );
-    const res = await fetch('https://agriconnectapi.pythonanywhere.com/agriculture/checkout/', {
+    const res = await fetch(`${config.apiUrl}/agriculture/checkout/`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${user && JSON.parse(user).token}`,
