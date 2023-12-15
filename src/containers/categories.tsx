@@ -56,7 +56,7 @@ const Categories = forwardRef(
             <SwiperSlide key={current.id}>
               <CategoryCard
                 id={current.id}
-                imageUrl={"http://localhost:8000"+current.image}
+                imageUrl={"https://agriconnectapi.pythonanywhere.com"+current.image}
                 name={current.name}
               />
             </SwiperSlide>
