@@ -1,3 +1,4 @@
+"use client";
 import { useContext, useEffect, useState } from 'react';
 import { PatternFormat } from 'react-number-format';
 import { DrawerContext } from 'contexts/drawer/drawer.provider';
@@ -89,7 +90,7 @@ export default function Checkout() {
     const form = new FormData();
 
     // Ajouter les champs à FormData
-    form.append('items', state.openLocation ? items1 : items);
+    form.append('items', state.openLocation ? JSON.stringify(items1) : JSON.stringify(items));
     form.append('name', user && JSON.parse(user).last_name);
     form.append('address', address);
     form.append('phone_number', goodformattedValue);
