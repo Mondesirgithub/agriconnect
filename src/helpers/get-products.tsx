@@ -1,5 +1,5 @@
 export async function getProducts() {
-  const produits = await fetch("http://127.0.0.1:8000/agriculture/equipements/", {
+  const produits = await fetch("https://agriconnectapi.pythonanywhere.com/agriculture/equipements/", {
     method: "GET"
   }) 
 
