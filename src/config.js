@@ -9,4 +9,4 @@ const config = {
     },
   };
   
-module.exports = config.development;
+module.exports = config.production;
