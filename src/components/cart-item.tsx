@@ -23,7 +23,7 @@ const CartItem: React.FC<CartItemProps> = ({ item, location }) => {
     <div className={CartItemBase}>
       <div className={CartItemImage}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={"http://localhost:8000"+item.image} alt={item.name} />
+        <img src={"https://agriconnectapi.pythonanywhere.com"+item.image} alt={item.name} />
       </div>
 
       <div className={CartItemContent}>

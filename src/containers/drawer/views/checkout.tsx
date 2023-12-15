@@ -100,7 +100,7 @@ export default function Checkout() {
       'bill_amount',
       state.openLocation ? calculatePrice1() : calculatePrice()
     );
-    const res = await fetch('http://localhost:8000/agriculture/checkout/', {
+    const res = await fetch('https://agriconnectapi.pythonanywhere.com/agriculture/checkout/', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${user && JSON.parse(user).token}`,
